@@ -21,7 +21,6 @@ class _HomepageState extends State<Homepage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getDarkMode();
     setJson();
@@ -39,6 +38,7 @@ class _HomepageState extends State<Homepage> {
   void getJson() async {
     final sharedPrefs = await SharedPreferences.getInstance();
     final jsonAsString = sharedPrefs.getString("user");
+    // ignore: unused_local_variable
     Map<String, dynamic> json = jsonDecode(jsonAsString!);
   }
 

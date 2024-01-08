@@ -16,12 +16,12 @@ class Blog {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['title'] = this.title;
-    data['content'] = this.content;
-    data['thumbnail'] = this.thumbnail;
-    data['author'] = this.author;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['title'] = title;
+    data['content'] = content;
+    data['thumbnail'] = thumbnail;
+    data['author'] = author;
     return data;
   }
 }
