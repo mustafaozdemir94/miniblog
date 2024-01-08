@@ -12,7 +12,8 @@ class ArticleRepository {
   }
 
   Future<Blog> fetchBlogById(String id) async {
-    Uri url = Uri.parse("https://tobetoapi.halitkalayci.com/api/Articles/$id");
+    Uri url =
+        Uri.parse("https://tobetoapi.halitkalayci.com/api/Articles/" + id);
     final response = await http.get(url);
     final body = json.decode(response.body);
     return Blog.fromJson(body);

@@ -6,12 +6,14 @@ import 'package:miniblog/repositories/article_repository.dart';
 class ArticleDetailBloc extends Bloc<ArticleDetailEvent, ArticleDetailState> {
   final ArticleRepository articleRepository;
 
-  ArticleDetailBloc({required this.articleRepository}) : super(ArticleDetailInitial()) {
+  ArticleDetailBloc({required this.articleRepository})
+      : super(ArticleDetailInitial()) {
     on<FetchArticleDetailEvent>(_onFetchArticleDetail);
     on<ResetFetchArticleDetail>(_onReset);
   }
 
-  void _onFetchArticleDetail(FetchArticleDetailEvent event, Emitter<ArticleDetailState> emit) async {
+  void _onFetchArticleDetail(
+      FetchArticleDetailEvent event, Emitter<ArticleDetailState> emit) async {
     emit(ArticleDetailLoading());
     try {
       final blog = await articleRepository.fetchBlogById(event.id);
@@ -21,7 +23,8 @@ class ArticleDetailBloc extends Bloc<ArticleDetailEvent, ArticleDetailState> {
     }
   }
 
-  void _onReset(ResetFetchArticleDetail event, Emitter<ArticleDetailState> emit) async {
+  void _onReset(
+      ResetFetchArticleDetail event, Emitter<ArticleDetailState> emit) async {
     emit(ArticleDetailInitial());
   }
 }

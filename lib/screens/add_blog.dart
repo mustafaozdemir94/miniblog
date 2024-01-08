@@ -8,7 +8,6 @@ class AddBlog extends StatefulWidget {
   const AddBlog({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _AddBlogState createState() => _AddBlogState();
 }
 
@@ -30,7 +29,8 @@ class _AddBlogState extends State<AddBlog> {
     request.fields['Author'] = author;
 
     if (selectedImage != null) {
-      final file = await http.MultipartFile.fromPath("File", selectedImage!.path);
+      final file =
+          await http.MultipartFile.fromPath("File", selectedImage!.path);
       request.files.add(file);
     }
 
@@ -38,13 +38,13 @@ class _AddBlogState extends State<AddBlog> {
 
     if (response.statusCode == 201) {
       // Ekleme başarılı
-      // ignore: use_build_context_synchronously
       Navigator.pop(context, true);
     }
   }
 
   pickImage() async {
-    XFile? selectedFile = await imagePicker.pickImage(source: ImageSource.gallery);
+    XFile? selectedFile =
+        await imagePicker.pickImage(source: ImageSource.gallery);
 
     setState(() {
       selectedImage = selectedFile;
@@ -61,14 +61,16 @@ class _AddBlogState extends State<AddBlog> {
             key: _formKey,
             child: ListView(
               children: [
-                if (selectedImage != null) Image.file(File(selectedImage!.path)),
+                if (selectedImage != null)
+                  Image.file(File(selectedImage!.path)),
                 ElevatedButton(
                     onPressed: () {
                       pickImage();
                     },
                     child: const Text("Fotoğraf Seç")),
                 TextFormField(
-                  decoration: const InputDecoration(label: Text("Blog Başlığı")),
+                  decoration:
+                      const InputDecoration(label: Text("Blog Başlığı")),
                   onSaved: (newValue) {
                     title = newValue!;
                   },
@@ -80,7 +82,8 @@ class _AddBlogState extends State<AddBlog> {
                   },
                 ),
                 TextFormField(
-                  decoration: const InputDecoration(label: Text("Blog İçeriği")),
+                  decoration:
+                      const InputDecoration(label: Text("Blog İçeriği")),
                   maxLines: 5,
                   onSaved: (newValue) {
                     content = newValue!;

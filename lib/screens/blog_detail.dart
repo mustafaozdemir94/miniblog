@@ -9,13 +9,13 @@ class BlogDetail extends StatefulWidget {
   final String id;
 
   @override
-  // ignore: library_private_types_in_public_api
   _BlogDetailState createState() => _BlogDetailState();
 }
 
 class _BlogDetailState extends State<BlogDetail> {
   @override
   void initState() {
+    // TODO: implement initState
     super.initState();
     context.read<ArticleDetailBloc>().add(ResetFetchArticleDetail());
   }
@@ -27,7 +27,9 @@ class _BlogDetailState extends State<BlogDetail> {
       body: BlocBuilder<ArticleDetailBloc, ArticleDetailState>(
         builder: (context, state) {
           if (state is ArticleDetailInitial) {
-            context.read<ArticleDetailBloc>().add(FetchArticleDetailEvent(id: widget.id));
+            context
+                .read<ArticleDetailBloc>()
+                .add(FetchArticleDetailEvent(id: widget.id));
             return const Center(child: Text("İstek atılıyor.."));
           }
 
@@ -42,7 +44,11 @@ class _BlogDetailState extends State<BlogDetail> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [Image.network(state.blog.thumbnail!), Text(state.blog.title!), Text(state.blog.content!)],
+                children: [
+                  Image.network(state.blog.thumbnail!),
+                  Text(state.blog.title!),
+                  Text(state.blog.content!)
+                ],
               ),
             );
           }
